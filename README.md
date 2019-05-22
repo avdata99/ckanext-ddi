@@ -3,6 +3,11 @@
 ckanext-ddi
 ===========
 
+**NOTE**: This is a heavily customized version for a specific project. If you want more generic support check out the upstream repo: https://github.com/liip/ckanext-ddi
+
+---
+
+
 DDI extension for CKAN for the Worldbank.
 
 Features:
