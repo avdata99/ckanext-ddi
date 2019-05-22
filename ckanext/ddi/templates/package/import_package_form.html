@@ -111,10 +111,10 @@
     {% if show_visibility_selector %}
       {% block package_metadata_fields_visibility %}
         <div class="control-group">
-          <label for="field-private" class="control-label">{{ _('Visibility') }}</label>
+          <label for="field-private" class="control-label">{{ _('Raw Data Access Level') }}</label>
           <div class="controls">
             <select id="field-private" name="private">
-              {% for option in [('True', _('Private')), ('False', _('Public'))] %}
+              {% for option in [('True', _('Private')), ('False', _('Internally Visible'))] %}
               <option value="{{ option[0] }}" {% if option[0] == data.private|trim %}selected="selected"{% endif %}>{{ option[1] }}</option>
               {% endfor %}
             </select>
