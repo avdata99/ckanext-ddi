@@ -98,7 +98,7 @@
             {% if h.check_config_permission('create_unowned_dataset') %}
                <option value="" {% if not selected_org and data.id %} selected="selected" {% endif %}>{{ _('No organization') }}</option>
             {% endif %}
-            {% for organization in organizations_available %}
+            {% for organization in organizations_available if not organization.name == 'data-deposit' %}
               {# get out first org from users list only if there is not an existing org #}
               {% set selected_org = (existing_org and existing_org == organization.id) or (not existing_org and not data.id and organization.id == organizations_available[0].id) %}
               <option value="{{ organization.id }}" {% if selected_org %} selected="selected" {% endif %}>{{ organization.display_name }}</option>
