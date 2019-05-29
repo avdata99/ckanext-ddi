@@ -156,8 +156,8 @@ class DdiImporter(HarvesterBase):
 
             pkg_dict['archived'] = 'False'
 
-        if pkg_dict.get('tags'):
-            pkg_dict['keywords'] = [tag['name'] for tag in pkg_dict['tags']]
+        if pkg_dict.get('keywords'):
+            pkg_dict['keywords'] = _get_keywords(pkg_dict['keywords'])
 
         if pkg_dict.get('unit_of_analysis'):
             pkg_dict['unit_of_measurement'] = pkg_dict['unit_of_analysis']
@@ -189,13 +189,19 @@ def _get_dataset_schema():
     return scheming_get_dataset_schema('dataset')
 
 
-def _get_data_collection_technique_value(xml_value):
+def get_allowed_values(field_name):
 
     schema = _get_dataset_schema()
 
     for field in schema['dataset_fields']:
-        if field['field_name'] == 'data_collection_technique':
+        if field['field_name'] == field_name:
             allowed_values = field['choices']
+
+    return allowed_values
+
+def _get_data_collection_technique_value(xml_value):
+
+    allowed_values = get_allowed_values('data_collection_technique')
 
     try:
         brackets_code = re.search('\[.*?\]', xml_value).group(0)
@@ -216,11 +222,7 @@ def _get_data_collector_values(xml_values):
 
     out = []
 
-    schema = _get_dataset_schema()
-
-    for field in schema['dataset_fields']:
-        if field['field_name'] == 'data_collector':
-            allowed_values = field['choices']
+    allowed_values = get_allowed_values('data_collector')
 
     for item in xml_values:
         for allowed_value in allowed_values:
@@ -230,6 +232,25 @@ def _get_data_collector_values(xml_values):
 
     return out
 
+def _get_keywords(xml_values):
+
+    out = []
+
+    allowed_values = get_allowed_values('keywords')
+
+    for item in xml_values:
+        found = False
+        for allowed_value in allowed_values:
+            if (item.get('abbr', '').lower() == allowed_value['value'] or
+                    item.get('value', '').lower() == allowed_value['label'].lower()):
+                out.append(allowed_value['value'])
+                found = True
+                break
+        if not found:
+            # Add value anyway so it fails validation
+            out.append(item.get('value'))
+
+    return out
 
 class ContentFetchError(Exception):
     pass

@@ -249,6 +249,7 @@ class CkanMetadata(object):
             'version_notes',
             'notes',
             'tags',
+            'keywords',
             'abbreviation',
             'study_type',
             'series_info',
@@ -462,6 +463,11 @@ class DdiCkanMetadata(CkanMetadata):
         'tags': ArrayDictNameValue([
             XPathMultiValue(
                 "//ddi:codeBook/ddi:stdyDscr/ddi:stdyInfo/ddi:subject/ddi:keyword"  # noqa
+            )
+        ]),
+        'keywords': ArrayDictValue([
+            XPathMultiValue(
+                "//ddi:codeBook/ddi:stdyDscr/ddi:stdyInfo/ddi:subject/ddi:topcClas"  # noqa
             )
         ]),
         'data_collection_technique': XPathTextValue(
