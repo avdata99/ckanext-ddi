@@ -223,7 +223,7 @@ def _get_data_collector_values(xml_values):
     for item in xml_values:
         value = item.get('value', '')
         if value:
-            collectors.append(value)
+            collectors.append(value.strip())
     return ','.join(collectors)
 
 
