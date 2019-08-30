@@ -219,18 +219,13 @@ def _get_data_collection_technique_value(xml_value):
 
 
 def _get_data_collector_values(xml_values):
-
-    out = []
-
-    allowed_values = get_allowed_values('data_collector')
-
+    collectors = []
     for item in xml_values:
-        for allowed_value in allowed_values:
-            if (item.get('abbr', '').lower() == allowed_value['value'] or
-                    item.get('value', '').lower() == allowed_value['label'].lower()):
-                out.append(allowed_value['value'])
+        value = item.get('value', '')
+        if value:
+            collectors.append(value)
+    return ','.join(collectors)
 
-    return out
 
 def _get_keywords(xml_values):
 
