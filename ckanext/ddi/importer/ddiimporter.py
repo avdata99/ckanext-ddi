@@ -153,7 +153,7 @@ class DdiImporter(HarvesterBase):
         pkg_dict['state'] = 'draft'
 
         if data:
-            for field in ('owner_org', 'private', 'visibility', 'license_id'):
+            for field in ('owner_org', 'private', 'visibility', 'license_id', 'external_access_level'):
                 if field in data:
                     pkg_dict[field] = data[field]
 
