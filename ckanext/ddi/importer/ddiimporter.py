@@ -54,6 +54,7 @@ class DdiImporter(HarvesterBase):
                     'name': 'NADA catalog entry',
                     'format': 'html',
                     'type': 'attachment',
+                    'file_type': 'other',
                 })
 
             if pkg_dict['url'] == '':
@@ -64,6 +65,7 @@ class DdiImporter(HarvesterBase):
                 'name': 'DDI XML',
                 'format': 'xml',
                 'type': 'attachment',
+                'file_type': 'other',
             })
             pkg_dict['resources'] = resources
 
@@ -117,6 +119,7 @@ class DdiImporter(HarvesterBase):
                         'format': 'xml',
                         'url': '',
                         'type': 'attachment',
+                        'file_type': 'other',
                     }
                 )
             except Exception, e:
@@ -150,7 +153,7 @@ class DdiImporter(HarvesterBase):
         pkg_dict['state'] = 'draft'
 
         if data:
-            for field in ('owner_org', 'private', 'visibility', 'license_id'):
+            for field in ('owner_org', 'private', 'visibility', 'license_id', 'external_access_level'):
                 if field in data:
                     pkg_dict[field] = data[field]
 
