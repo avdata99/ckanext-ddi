@@ -29,7 +29,7 @@
 {% endmacro %}
 
 
-<form class="dataset-form form-horizontal" method="post" enctype="multipart/form-data" action="importfile" data-module="basic-form">
+<form class="dataset-form form-horizontal" method="post" enctype="multipart/form-data" action="import" data-module="basic-form">
 
   {% block stages %}
     {{ h.snippet('package/snippets/stages.html', stages=stage) }}

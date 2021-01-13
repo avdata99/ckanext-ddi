@@ -8,6 +8,8 @@ from importer import ddiimporter
 
 import logging
 from pylons import config
+
+from ckanext.ddi import blueprints
 log = logging.getLogger(__name__)
 
 
@@ -57,24 +59,11 @@ def import_from_xml():
 
 
 class DdiImport(plugins.SingletonPlugin):
-    plugins.implements(plugins.IRoutes)
+    plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IConfigurer)
 
-    def before_map(self, map):
-        map.connect(
-            '/dataset/import',
-            controller='ckanext.ddi.controllers:ImportFromXml',
-            action='import_form'
-        )
-        map.connect(
-            '/dataset/importfile',
-            controller='ckanext.ddi.controllers:ImportFromXml',
-            action='run_import'
-        )
-        return map
-
-    def after_map(self, map):
-        return map
+    def get_blueprint(self):
+        return blueprints.ddi_import_blueprint
 
     def update_config(self, config):
         tk.add_template_directory(config, 'templates')
