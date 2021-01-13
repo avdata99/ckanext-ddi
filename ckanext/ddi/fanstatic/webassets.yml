@@ -1,0 +1,8 @@
+upload_js:
+  filter: rjsmin
+  output: ckanext-ddi/%(version)s_upload_js.js
+  extra:
+    preload:
+      - base/main
+  contents:
+    - upload.js

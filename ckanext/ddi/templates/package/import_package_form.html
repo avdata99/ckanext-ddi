@@ -1,7 +1,12 @@
 {% import 'macros/form.html' as form %}
 {% set form_style = c.form_style or c.action %}
 
-{% resource 'ddi/upload.js' %}
+{% if h.ckan_version().split('.')[1] | int >= 9 %}
+  {% include 'ddi/snippets/ddi_asset.html' %}
+{% else %}
+  {% include 'ddi/snippets/ddi_resource.html' %}
+{% endif %}
+
 
 {% macro file_upload(data, errors, field_url='image_url', field_upload='image_upload', field_clear='clear_upload',
                       is_url=false, is_upload=false, is_upload_enabled=false, placeholder=false,
