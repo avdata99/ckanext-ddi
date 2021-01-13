@@ -13,7 +13,6 @@ from ckanext.scheming.helpers import scheming_get_dataset_schema
 import ckanapi
 
 import logging
-from pylons import config
 log = logging.getLogger(__name__)
 
 
@@ -83,10 +82,10 @@ class DdiImporter(HarvesterBase):
     def insert_or_update_pkg(self, pkg_dict, upload=None):
         registry = ckanapi.LocalCKAN(username=self.username)
         allow_duplicates = tk.asbool(
-            config.get('ckanext.ddi.allow_duplicates', False)
+            tk.config.get('ckanext.ddi.allow_duplicates', False)
         )
         override_datasets = tk.asbool(
-            config.get('ckanext.ddi.override_datasets', False)
+            tk.config.get('ckanext.ddi.override_datasets', False)
         )
         try:
             existing_pkg = registry.call_action('package_show', pkg_dict)
@@ -144,7 +143,7 @@ class DdiImporter(HarvesterBase):
         if params is not None and params.get(license, None) is not None:
             pkg_dict['license_id'] = params['license']
         else:
-            pkg_dict['license_id'] = config.get('ckanext.ddi.default_license')
+            pkg_dict['license_id'] = tk.config.get('ckanext.ddi.default_license')
 
         # TODO: move all this to a interface method in ckanext-unhcr
 
