@@ -1,5 +1,6 @@
 from lxml import etree
 import logging
+import six
 from ckan.lib.munge import munge_title_to_name
 log = logging.getLogger(__name__)
 
@@ -80,7 +81,7 @@ class XPathTextValue(XPathValue):
                 value.text is not None and
                 value.text.strip() != ''):
             return value.text.strip()
-        elif isinstance(value, basestring):
+        elif isinstance(value, six.string_types):
             return value
         else:
             return ''
@@ -96,7 +97,7 @@ class XPathMultiTextValue(XPathMultiValue):
                     value.text is not None and
                     value.text.strip() != ''):
                 return_values.append(value.text.strip())
-            elif isinstance(value, basestring):
+            elif isinstance(value, six.string_types):
                 return_values.append(value)
         return return_values
 
@@ -294,7 +295,7 @@ class CkanMetadata(object):
     def load(self, xml_string):
         try:
             dataset_xml = etree.fromstring(xml_string)
-        except etree.XMLSyntaxError, e:
+        except etree.XMLSyntaxError as e:
             raise MetadataFormatError('Could not parse XML: %r' % e)
 
         ckan_metadata = {}

@@ -237,7 +237,7 @@ class ImportView(MethodView):
 
     def _save_temp_file(self, fileobj):
         fd, file_path = tempfile.mkstemp()
-        with os.fdopen(fd, 'w') as output_file:
+        with os.fdopen(fd, 'wb') as output_file:
             fileobj.seek(0)
             shutil.copyfileobj(fileobj, output_file)
         return file_path
