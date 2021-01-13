@@ -195,6 +195,8 @@ def _get_dataset_schema():
 def get_allowed_values(field_name):
 
     schema = _get_dataset_schema()
+    if not schema:
+        return []
 
     for field in schema['dataset_fields']:
         if field['field_name'] == field_name:
