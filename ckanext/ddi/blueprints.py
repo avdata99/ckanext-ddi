@@ -219,14 +219,18 @@ class ImportView(MethodView):
                 os.remove(file_path)
 
         if pkg_id is not None:
-            # TODO: if CKAN 2.8:
-            url = toolkit.h.url_for(
-                controller='package',
-                action='new_resource',
-                id=pkg_id,
-            )
-            # else if CKAN 2.9:
-            # url = something else
+            try:
+                toolkit.requires_ckan_version("2.9")
+                url = toolkit.h.url_for(
+                    u'{}_resource.new'.format(package_type),
+                    id=pkg_id,
+                )
+            except toolkit.CkanVersionException:
+                url = toolkit.h.url_for(
+                    controller='package',
+                    action='new_resource',
+                    id=pkg_id,
+                )
             return toolkit.redirect_to(url)
         else:
             return toolkit.redirect_to(toolkit.h.url_for('ddi_import.import'))
