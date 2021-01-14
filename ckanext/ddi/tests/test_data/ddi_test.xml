@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<codeBook version="1.2.2" ID="UNHCR-DDI-test" xml-lang="en" xmlns="http://www.icpsr.umich.edu/DDI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.icpsr.umich.edu/DDI http://www.icpsr.umich.edu/DDI/Version1-2-2.xsd">
+  <docDscr>
+    <citation>
+      <titlStmt>
+        <titl>
+          DDI_test
+        </titl>
+      </titlStmt>
+      <prodStmt>
+        <producer abbr="UNHCR"/>
+        <software version="4.0.10" date="2018-05-02">
+          Nesstar Publisher
+        </software>
+      </prodStmt>
+    </citation>
+  </docDscr>
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>
+          DDI test file
+        </titl>
+        <IDNo>
+          DDI-test 1
+        </IDNo>
+      </titlStmt>
+      <rspStmt>
+        <AuthEnty affiliation="UNHCR">
+          Lorem ipsum dolor sit amet
+        </AuthEnty>
+      </rspStmt>
+      <prodStmt>
+        <producer>
+          Lorem
+        </producer>
+        <producer>
+          ipsum
+        </producer>
+        <producer>
+          dolor
+        </producer>
+        <producer>
+          sit
+        </producer>
+        <software version="4.0.10" date="2018-05-02">
+          Lorem ipsum dolor sit amet
+        </software>
+      </prodStmt>
+      <distStmt>
+        <contact affiliation="UNHCR" email="solutions@unhcr.org">
+          Solutions
+        </contact>
+      </distStmt>
+      <serStmt>
+        <serName>
+          Other Household Survey [hh/oth]
+        </serName>
+        <serInfo>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </serInfo>
+      </serStmt>
+      <verStmt>
+        <version date="2018-12-15">
+          1.1: Edited, anonymous test
+        </version>
+      </verStmt>
+    </citation>
+    <stdyInfo>
+      <subject>
+        <keyword>
+          Lorem
+        </keyword>
+        <keyword>
+          ipsum
+        </keyword>
+        <keyword>
+          dolor
+        </keyword>
+        <keyword>
+          sit
+        </keyword>
+        <topcClas>
+          amet
+        </topcClas>
+        <topcClas>
+          consectetur
+        </topcClas>
+        <topcClas>
+          adipiscing
+        </topcClas>
+      </subject>
+      <abstract>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </abstract>
+      <sumDscr>
+        <collDate date="2017-09-11" event="start"/>
+        <collDate date="2017-11-14" event="end"/>
+        <nation abbr="MRT">
+          Mauritania
+        </nation>
+        <geogCover>
+          Mauritania
+        </geogCover>
+        <anlyUnit>
+          Household and individual
+        </anlyUnit>
+        <universe>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </universe>
+        <dataKind>
+          Sample survey data [ssd]
+        </dataKind>
+      </sumDscr>
+      <notes>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </notes>
+    </stdyInfo>
+    <method>
+      <dataColl>
+        <dataCollector>
+          Lorem
+        </dataCollector>
+        <dataCollector>
+          ipsum
+        </dataCollector>
+        <dataCollector>
+          dolor
+        </dataCollector>
+        <sampProc>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </sampProc>
+        <deviat>
+          None.
+        </deviat>
+        <collMode>
+          Computer Assisted Personal Interview [capi]
+        </collMode>
+        <resInstru>
+          All questionaires are provided in section "external ressources".
+        </resInstru>
+        <sources/>
+        <collSitu>
+          Data was collected through computer-assisted face-to-face interviewing.
+        </collSitu>
+        <weight>
+          This dataset is self-weighting.
+        </weight>
+        <cleanOps>
+          The dataset presented here has undergone light checking, cleaning and restructuring.
+        </cleanOps>
+      </dataColl>
+      <anlyInfo>
+        <respRate>
+          Overall response rate was 100%
+        </respRate>
+      </anlyInfo>
+    </method>
+    <dataAccs>
+      <useStmt>
+        <confDec required="yes">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </confDec>
+        <citReq>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </citReq>
+        <disclaimer>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </disclaimer>
+      </useStmt>
+    </dataAccs>
+  </stdyDscr>
+  <dataDscr/>
+</codeBook>

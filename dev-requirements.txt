@@ -1,0 +1,4 @@
+ckantoolkit>=0.0.3
+pytest
+pytest-ckan
+pytest-cov

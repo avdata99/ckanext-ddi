@@ -3,5 +3,4 @@
 lxml>=4.4.0
 requests>=2.5.3
 ckanapi>=3.4
-flake8==2.1.0
 six>=1.12.0
