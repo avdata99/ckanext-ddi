@@ -150,7 +150,13 @@ class DdiImporter(HarvesterBase):
         pkg_dict['state'] = 'draft'
 
         if data:
-            for field in ('owner_org', 'private', 'visibility', 'license_id', 'external_access_level'):
+            for field in (
+                'owner_org',
+                'private',
+                'visibility',
+                'license_id',
+                'external_access_level',
+            ):
                 if field in data:
                     pkg_dict[field] = data[field]
 
@@ -201,12 +207,13 @@ def get_allowed_values(field_name):
 
     return allowed_values
 
+
 def _get_data_collection_technique_value(xml_value):
 
     allowed_values = get_allowed_values('data_collection_technique')
 
     try:
-        brackets_code = re.search('\[.*?\]', xml_value).group(0)
+        brackets_code = re.search(r'\[.*?\]', xml_value).group(0)
         brackets_code = brackets_code.lstrip('[').rstrip(']')
     except AttributeError:
         brackets_code = ''
@@ -248,6 +255,7 @@ def _get_keywords(xml_values):
             out.append(item.get('value'))
 
     return out
+
 
 class ContentFetchError(Exception):
     pass
