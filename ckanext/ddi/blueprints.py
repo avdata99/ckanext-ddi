@@ -172,16 +172,9 @@ class ImportView(MethodView):
                     url=data['url'],
                     data=data,
                 )
+            else:
+                raise PackageImportError('An XML file (uploaded file or URL) is required')
 
-            if pkg_id is None:
-                raise PackageImportError(
-                    'Could not import package (%s / %s / %s)'
-                    % (
-                        data.get('upload'),
-                        file_path,
-                        data.get('url'),
-                    )
-                )
             registry = ckanapi.LocalCKAN(username=user)
 
             resource_dict = {
