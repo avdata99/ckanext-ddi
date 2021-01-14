@@ -1,7 +1,8 @@
-[![Build Status](https://travis-ci.org/liip/ckanext-ddi.svg?branch=master)](https://travis-ci.org/liip/ckanext-ddi)
-
 ckanext-ddi
 ===========
+
+![Tests](https://github.com/okfn/ckanext-ddi/workflows/Tests/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/okfn/ckanext-ddi/branch/master/graph/badge.svg?token=64CxGCG5z4)](https://codecov.io/gh/okfn/ckanext-ddi)
 
 **NOTE**: This is a heavily customized version for a specific project. If you want more generic support check out the upstream repo: https://github.com/liip/ckanext-ddi
 
