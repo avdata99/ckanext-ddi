@@ -1,18 +1,25 @@
 <div class="page_primary_action">
   {% if group %}
     <span >
-      {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-square', group=group %}
+      {% if h.ckan_version().split('.')[1] | int >= 9 %}
+        {% link_for _('Add Dataset'), named_route='dataset.new', class_='btn btn-primary', icon='plus-square', group=group %}
+      {% else %}
+        {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-square', group=group %}
+      {% endif %}
     </span>
     <span>
-      {% link_for _('Import Dataset from DDI/XML'), controller='ckanext.ddi.controllers:ImportFromXml', action='import_form', class_='btn btn-primary', icon='plus-square', group=group  %}
+      {% link_for _('Import Dataset from DDI/XML'), named_route='ddi_import.import', class_='btn btn-primary', icon='plus-square', group=group  %}
     </span>
   {% else %}
     <span >
-      {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-square' %}
+      {% if h.ckan_version().split('.')[1] | int >= 9 %}
+        {% link_for _('Add Dataset'), named_route='dataset.new', class_='btn btn-primary', icon='plus-square' %}
+      {% else %}
+        {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-square' %}
+      {% endif %}
     </span>
     <span>
-      {% link_for _('Import Dataset from DDI/XML'), controller='ckanext.ddi.controllers:ImportFromXml', action='import_form', class_='btn btn-primary', icon='plus-square' %}
+      {% link_for _('Import Dataset from DDI/XML'), named_route='ddi_import.import', class_='btn btn-primary', icon='plus-square' %}
     </span>
   {% endif %}
 </div>
-

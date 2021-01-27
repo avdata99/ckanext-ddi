@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-import sys, os
 
 version = '1.0.0'
 
@@ -9,7 +8,7 @@ setup(
     description="CKAN extension for the DDI standard format for the Worldbank",
     long_description="""\
     """,
-    classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+    classifiers=[],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     keywords='',
     author='Liip AG',
     author_email='ogd@liip.ch',
@@ -22,15 +21,8 @@ setup(
     install_requires=[
         # -*- Extra requirements: -*-
     ],
-    entry_points=\
-    """
+    entry_points="""
     [ckan.plugins]
-    ddi_theme=ckanext.ddi.plugins:DdiTheme
-    ddi_schema=ckanext.ddi.plugins:DdiSchema
     ddi_import=ckanext.ddi.plugins:DdiImport
-    nada_harvester=ckanext.ddi.harvesters:NadaHarvester
-    [paste.paster_command]
-    harvester=ckanext.ddi.commands.harvester:Harvester
-    ddi=ckanext.ddi.commands.ddi:DdiCommand
     """,
 )

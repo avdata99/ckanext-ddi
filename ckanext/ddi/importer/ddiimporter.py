@@ -13,7 +13,6 @@ from ckanext.scheming.helpers import scheming_get_dataset_schema
 import ckanapi
 
 import logging
-from pylons import config
 log = logging.getLogger(__name__)
 
 
@@ -25,21 +24,19 @@ class DdiImporter(HarvesterBase):
         pkg_dict = None
         ckan_metadata = metadata.DdiCkanMetadata()
         if file_path is not None:
-            with codecs.open(file_path, 'r', encoding='utf-8') as xml_file:
+            with codecs.open(file_path, 'rb') as xml_file:
                 pkg_dict = ckan_metadata.load(xml_file.read())
         elif url is not None:
             log.debug('Fetch file from %s' % url)
             try:
                 r = requests.get(url)
-            except requests.exceptions.RequestException, e:
+            except requests.exceptions.RequestException as e:
                 raise ContentFetchError(
                     'Error while getting URL %s: %r'
                     % (url, e)
                 )
-            r.encoding = 'utf-8'
-            xml_file = r.text
 
-            pkg_dict = ckan_metadata.load(xml_file)
+            pkg_dict = ckan_metadata.load(r.content)
             resources = []
 
             # if we can assume the URL is from a NADA catalogue
@@ -72,9 +69,9 @@ class DdiImporter(HarvesterBase):
         pkg_dict = self.improve_pkg_dict(pkg_dict, params, data)
         try:
             return self.insert_or_update_pkg(pkg_dict, upload)
-        except tk.ValidationError, e:
+        except tk.ValidationError as e:
             raise e
-        except Exception, e:
+        except Exception as e:
             raise ContentImportError(
                 'Could not import dataset %s: %s'
                 % (pkg_dict.get('name', ''), e)
@@ -83,10 +80,10 @@ class DdiImporter(HarvesterBase):
     def insert_or_update_pkg(self, pkg_dict, upload=None):
         registry = ckanapi.LocalCKAN(username=self.username)
         allow_duplicates = tk.asbool(
-            config.get('ckanext.ddi.allow_duplicates', False)
+            tk.config.get('ckanext.ddi.allow_duplicates', False)
         )
         override_datasets = tk.asbool(
-            config.get('ckanext.ddi.override_datasets', False)
+            tk.config.get('ckanext.ddi.override_datasets', False)
         )
         try:
             existing_pkg = registry.call_action('package_show', pkg_dict)
@@ -122,7 +119,7 @@ class DdiImporter(HarvesterBase):
                         'file_type': 'other',
                     }
                 )
-            except Exception, e:
+            except Exception as e:
                 raise UploadError(
                     'Could not upload file: %s' % str(e)
                 )
@@ -144,7 +141,7 @@ class DdiImporter(HarvesterBase):
         if params is not None and params.get(license, None) is not None:
             pkg_dict['license_id'] = params['license']
         else:
-            pkg_dict['license_id'] = config.get('ckanext.ddi.default_license')
+            pkg_dict['license_id'] = tk.config.get('ckanext.ddi.default_license')
 
         # TODO: move all this to a interface method in ckanext-unhcr
 
@@ -153,7 +150,13 @@ class DdiImporter(HarvesterBase):
         pkg_dict['state'] = 'draft'
 
         if data:
-            for field in ('owner_org', 'private', 'visibility', 'license_id', 'external_access_level'):
+            for field in (
+                'owner_org',
+                'private',
+                'visibility',
+                'license_id',
+                'external_access_level',
+            ):
                 if field in data:
                     pkg_dict[field] = data[field]
 
@@ -195,6 +198,8 @@ def _get_dataset_schema():
 def get_allowed_values(field_name):
 
     schema = _get_dataset_schema()
+    if not schema:
+        return []
 
     for field in schema['dataset_fields']:
         if field['field_name'] == field_name:
@@ -202,12 +207,13 @@ def get_allowed_values(field_name):
 
     return allowed_values
 
+
 def _get_data_collection_technique_value(xml_value):
 
     allowed_values = get_allowed_values('data_collection_technique')
 
     try:
-        brackets_code = re.search('\[.*?\]', xml_value).group(0)
+        brackets_code = re.search(r'\[.*?\]', xml_value).group(0)
         brackets_code = brackets_code.lstrip('[').rstrip(']')
     except AttributeError:
         brackets_code = ''
@@ -249,6 +255,7 @@ def _get_keywords(xml_values):
             out.append(item.get('value'))
 
     return out
+
 
 class ContentFetchError(Exception):
     pass

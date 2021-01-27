@@ -71,8 +71,8 @@ this.ckan.module('file-upload', function($) {
 
       // Button for resetting the form when there is a URL set
       var removeText = this._('Remove');
-      $('<a href="javascript:;" class="btn btn-danger btn-remove-url">'
-        + removeText + '</a>')
+      $('<a href="javascript:;" class="btn btn-danger btn-remove-url">' +
+        removeText + '</a>')
         .prop('title', removeText)
         .on('click', this._onRemove)
         .insertBefore(this.field_url_input);
@@ -261,7 +261,7 @@ this.ckan.module('file-upload', function($) {
      * Returns nothing
      */
     _onFromWebBlur: function() {
-      var url = this.field_url_input.val().match(/([^\/]+)\/?$/)
+      var url = this.field_url_input.val().match(/([^\/]+)\/?$/);
       if (url) {
         this._autoName(url.pop());
       }
