@@ -9,15 +9,12 @@ ckanext-ddi
 ---
 
 
-DDI extension for CKAN for the Worldbank.
+DDI extension for CKAN.
 
 Features:
 
-* [Configuration of DDI fields to customize display](#ddi-fields-configuration)
-* [Import DDI data via command line](#run-import-from-command-line)
+* [Configuration of DDI fields to customize display](#configuration)
 * [Upload DDI files (XML) to a CKAN instance](#import)
-* [Manage DDI data manually via the CKAN frontend](#manage-ddi-datasets)
-* [Harvest data from a NADA instance](#nada-harvester)
 
 
 ## Installation
