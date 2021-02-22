@@ -233,6 +233,7 @@ class ImportView(MethodView):
         with os.fdopen(fd, 'wb') as output_file:
             fileobj.seek(0)
             shutil.copyfileobj(fileobj, output_file)
+            fileobj.seek(0)
         return file_path
 
 
