@@ -46,8 +46,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Install system dependencies
+      run: sudo apk add gcc musl-dev python3-dev libffi-dev openssl-dev cargo
+
     - name: Install requirements
       run: |
+        pip install --upgrade pip
         # scheming
         pip install -e git+https://github.com/ckan/ckanext-scheming.git@release-2.0.0#egg=ckanext-scheming
         pip install -r https://raw.githubusercontent.com/ckan/ckanext-scheming/release-2.0.0/requirements.txt
